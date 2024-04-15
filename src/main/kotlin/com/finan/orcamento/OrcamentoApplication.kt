@@ -3,7 +3,7 @@ package com.finan.orcamento
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-@SpringBootApplicatgit aion
+@SpringBootApplication
 class OrcamentoApplication
 
 fun main(args: Array<String>) {
