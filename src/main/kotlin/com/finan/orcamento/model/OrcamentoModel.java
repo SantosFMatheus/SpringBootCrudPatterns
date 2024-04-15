@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -38,4 +37,81 @@ public class OrcamentoModel implements Serializable {
         this.valorICMS = this.icmsEstados.getStrategy().calcular(this.valorOrcamento);
     }
 
+    @Column(name="qtd_itens")
+    private int qtdItens;
+
+    @Column(name="desconto_orcamento")
+    private BigDecimal descontoOrcamento;
+
+    public Long getId() {
+        return id;
+    }
+
+    public IcmsEstados getIcmsEstados() {
+        return icmsEstados;
+    }
+
+    @NotNull
+    public BigDecimal getValorOrcamento() {
+        try{
+            Thread.sleep(3000);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+}
+        return valorOrcamento;
+    }
+
+    public BigDecimal getValorICMS() {
+        return valorICMS;
+    }
+
+    public UsuarioModel getUsuario() {
+        return usuario;
+    }
+
+    public int getQtdItens() {
+        try{
+            Thread.sleep(3000);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+}
+        return qtdItens;
+    }
+
+    public BigDecimal getDescontoOrcamento() {
+        try{
+            Thread.sleep(3000);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
+}
+        return descontoOrcamento;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setIcmsEstados(IcmsEstados icmsEstados) {
+        this.icmsEstados = icmsEstados;
+    }
+
+    public void setValorOrcamento(@NotNull BigDecimal valorOrcamento) {
+        this.valorOrcamento = valorOrcamento;
+    }
+
+    public void setValorICMS(BigDecimal valorICMS) {
+        this.valorICMS = valorICMS;
+    }
+
+    public void setUsuario(UsuarioModel usuario) {
+        this.usuario = usuario;
+    }
+
+    public void setQtdItens(int qtdItens) {
+        this.qtdItens = qtdItens;
+    }
+
+    public void setDescontoOrcamento(BigDecimal descontoOrcamento) {
+        this.descontoOrcamento = descontoOrcamento;
+    }
 }
