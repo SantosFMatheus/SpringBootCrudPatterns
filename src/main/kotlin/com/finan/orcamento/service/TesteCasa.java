@@ -8,11 +8,14 @@ public class TesteCasa{
         // Criar instância do serviço de Casa
         CasaService casaService = new CasaService();
 
-        // Cadastrar uma nova casa
-        CasaModel casa1 = new CasaModel(null, "Rua A", 3, 200000);
-        casa1.setEndereco("Rua A");
-        casa1.setQuartos(3);
-        casa1.setPreco(200000);
+        // Criar uma nova casa usando o padrão Builder
+        CasaModel casa1 = new CasaModel.Builder()
+                .endereco("Rua A")
+                .quartos(3)
+                .preco(200000)
+                .build();
+
+        // Cadastrar a nova casa
         casaService.cadastrarCasa(casa1);
 
         // Buscar todas as casas cadastradas e exibir
@@ -26,7 +29,9 @@ public class TesteCasa{
         System.out.println(casaEncontrada);
 
         // Atualizar uma casa existente
-        casaEncontrada.setEndereco("Nova Rua");
+        casaEncontrada = new CasaModel.Builder(casaEncontrada)
+                .endereco("Nova Rua")
+                .build();
         casaService.atualizaCasa(casaEncontrada, idCasa);
         System.out.println("\nCasa atualizada:");
         System.out.println(casaService.buscaId(idCasa));

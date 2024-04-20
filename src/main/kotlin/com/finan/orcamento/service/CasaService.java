@@ -31,10 +31,16 @@ public class CasaService {
     }
 
     public CasaModel atualizaCasa(CasaModel casaModel, Long id) {
-        CasaModel novaCasaModel = buscaId(id);
-        novaCasaModel.setEndereco(casaModel.getEndereco());
-        // Defina outros atributos conforme necessário
-        return casaRepository.save(novaCasaModel);
+        CasaModel casaExistente = buscaId(id);
+
+        // Criar um novo Builder com base na casa existente e atualizar os atributos
+        CasaModel.Builder builder = new CasaModel.Builder(casaExistente)
+                .endereco(casaModel.getEndereco())
+                .quartos(casaModel.getQuartos())
+                .preco(casaModel.getPreco());
+
+        // Construir e salvar a casa atualizada
+        return casaRepository.save(builder.build());
     }
 
     public void deletaCasa(Long id) {
